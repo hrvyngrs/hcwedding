@@ -54,7 +54,88 @@
 
   <div class="typing-text" id="typing-text">Forever begins..<span class="cursor">|</span></div>
 </div>
+<!-- SECURITY START HRVS -->
+<style>
+  body.blur {
+    filter: blur(10px);
+  }
+</style>
 
+<script>
+document.addEventListener("visibilitychange", function() {
+  if (document.hidden) {
+    document.body.classList.add("blur");
+  } else {
+    document.body.classList.remove("blur");
+  }
+});
+</script>
+<script>
+document.addEventListener("contextmenu", event => event.preventDefault());
+
+document.onkeydown = function(e) {
+  if (e.keyCode == 123) { // F12
+    return false;
+  }
+  if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
+    return false;
+  }
+}
+</script>
+
+
+<style>
+.watermark{
+  position:fixed;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%) rotate(-30deg);
+  font-size:60px;
+  color:rgba(0,0,0,0.1);
+  pointer-events:none;
+}
+</style>
+<script>
+document.addEventListener("keyup", function(e) {
+  if (e.key === "PrintScreen") {
+    alert("Screenshots are not allowed.");
+  }
+});
+</script>
+<style>
+.blur {
+  filter: blur(12px);
+}
+</style>
+
+<script>
+document.addEventListener("visibilitychange", function () {
+  if (document.hidden) {
+    document.body.classList.add("blur");
+  } else {
+    document.body.classList.remove("blur");
+  }
+});
+</script>
+<style>
+img {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+  pointer-events: none;
+}
+</style>
+<style>
+body {
+  -webkit-user-select: none;
+  user-select: none;
+}
+</style>
+
+window.addEventListener("resize", function(){
+  console.log("Possible screenshot attempt");
+});
+<!-- SECURITY END HRVS -->
 <!-- MAIN CONTENT -->
 <div id="main-content" style="display:none;">
   <!-- Your wedding page HTML here -->
@@ -308,8 +389,8 @@ document.addEventListener('click', () => {
     <div class="container-fluid py-5" id="story">
         <div class="container pt-5 pb-3">
             <div class="section-title position-relative text-center">
-                <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">Our Story</h6>
-                <h1 class="font-secondary display-4">From Jollibee to Forever</h1>
+                <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">The Story</h6>
+                <h1 class="font-secondary display-4">From USJ-R to Forever</h1>
                 <i class="far fa-heart text-dark"></i>
             </div>
  <div class="container timeline p-0">
@@ -393,7 +474,7 @@ document.addEventListener('click', () => {
     <div class="container-fluid bg-gallery" id="gallery" style="padding: 120px 0; margin: 90px 0;">
         <div class="section-title position-relative text-center" style="margin-bottom: 120px;">
             <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">Gallery</h6>
-            <h1 class="font-secondary display-4 text-white">Our Photo Gallery</h1>
+            <h1 class="font-secondary display-4 text-white">The Photo Gallery</h1>
             <i class="far fa-heart text-white"></i>
         </div>
         <div class="owl-carousel gallery-carousel">
@@ -444,7 +525,7 @@ document.addEventListener('click', () => {
         <!-- Section Title -->
         <div class="section-title position-relative text-center">
             <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">Event Details</h6>
-            <h1 class="font-secondary display-4">Our Wedding Day</h1>
+            <h1 class="font-secondary display-4">The Wedding Day</h1>
             <i class="far fa-heart text-dark"></i>
         </div>
 
@@ -452,7 +533,7 @@ document.addEventListener('click', () => {
  <div class="row justify-content-center mb-5">
     <div class="col-md-8 text-center">
         <p class="font-weight-normal text-muted mb-3 pb-3">
-            We are overjoyed to celebrate our love with family and friends! Our wedding ceremony will take place on 
+            We are overjoyed to celebrate our love with family and friends! The wedding ceremony will take place on 
             <strong>June 12, 2026, at 2:00 PM</strong> at <strong>Redemptorist Church</strong>. 
             Following the ceremony, please join us for our reception at <strong>The Waterfront Cebu City Hotel & Casino</strong>, 
             where we will continue the celebration with dining, dancing, and memories to last a lifetime.
