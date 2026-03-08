@@ -43,12 +43,12 @@
                 <a href="#gallery" class="nav-item nav-link">Gallery</a>
             </div>
             <a href="index.html" class="navbar-brand mx-5 d-none d-lg-block">
-                <h1 class="font-secondary text-white mb-n2">Harvy & Christine</h1>
+                <h1 class="font-secondary text-white mb-n2">H & C</h1>
             </a>
             <div class="navbar-nav mr-auto py-0">
-                <a href="#event" class="nav-item nav-link">Guide</a>
+                <a href="#event" class="nav-item nav-link">Event Info</a>
                 <a href="#family" class="nav-item nav-link">Entourage</a>
-                <a href="#rsvp" class="nav-item nav-link">Sponsors</a>
+                <a href="#rsvp" class="nav-item nav-link">Dress & Gift Guide</a>
                 <a href="#contact" class="nav-item nav-link">RSVP</a>
             </div>
         </div>
@@ -75,14 +75,11 @@
 <audio id="audioPlayer" src="play.mp3"></audio>
 
 <script>
-    const playButton = document.getElementById('playButton');
-    const audioPlayer = document.getElementById('audioPlayer');
+const audioPlayer = document.getElementById('audioPlayer');
 
-    playButton.addEventListener('click', () => {
-        audioPlayer.play().catch(err => {
-            alert("Audio can't play automatically. Click OK and try again.");
-        });
-    });
+document.addEventListener('click', () => {
+    audioPlayer.play();
+}, { once: true });
 </script>
                         </div>
                     </div>
@@ -102,14 +99,11 @@
 <audio id="audioPlayer" src="play.mp3"></audio>
 
 <script>
-    const playButton = document.getElementById('playButton');
-    const audioPlayer = document.getElementById('audioPlayer');
+const audioPlayer = document.getElementById('audioPlayer');
 
-    playButton.addEventListener('click', () => {
-        audioPlayer.play().catch(err => {
-            alert("Audio can't play automatically. Click OK and try again.");
-        });
-    });
+document.addEventListener('click', () => {
+    audioPlayer.play();
+}, { once: true });
 </script>
                         </div>
                     </div>
@@ -191,8 +185,8 @@
     <div class="container-fluid py-5" id="story">
         <div class="container pt-5 pb-3">
             <div class="section-title position-relative text-center">
-                <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">Story</h6>
-                <h1 class="font-secondary display-4">Our Love Story</h1>
+                <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">Our Story</h6>
+                <h1 class="font-secondary display-4">From Jollibee to Forever</h1>
                 <i class="far fa-heart text-dark"></i>
             </div>
             <div class="container timeline position-relative p-0">
@@ -202,9 +196,9 @@
                     </div>
                     <div class="col-md-6 text-center text-md-left">
                         <div class="h-100 d-flex flex-column justify-content-center bg-secondary p-4 ml-md-3">
-                            <h4 class="mb-2">First Meet</h4>
-                            <p class="text-uppercase mb-2">Nov. 2016</p>
-                            <p class="m-0">Harvy and Christine first met in **November 2016** at Jollibee in Gaisano Mactan. After many attempts to plan a meet-up, the day finally came when both of them were finally available. Christine was the one who initiated the plan, while Harvy arrived feeling both excited and very nervous.<BR/><BR/>
+                            <h4 class="mb-2">First Meet & Date</h4>
+                            <p class="text-uppercase mb-2">Nov 2016</p>
+                            <p class="m-0">Harvy and Christine first met in November 2016 at Jollibee in Gaisano Mactan. After many attempts to plan a meet-up, the day finally came when both of them were finally available. Christine was the one who initiated the plan, while Harvy arrived feeling both excited and very nervous.<BR/><BR/>
 
 Christine came straight from school that day, carrying a big shoulder bag. One of the most memorable moments from their first meeting was when Harvy jokingly asked if she was planning to move in already since it looked like she had packed all her things in that bag. The joke made them both laugh and instantly broke the ice.<BR/><BR/>
 
@@ -317,7 +311,7 @@ The magic unfolded at Puka Beach, with the sun shining down on the white sand an
     <div class="container-fluid py-5" id="event">
         <div class="container py-5">
             <div class="section-title position-relative text-center">
-                <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">Event Details & Gifts</h6>
+                <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">Event Details</h6>
                 <h1 class="font-secondary display-4">Our Wedding Day</h1>
                 <i class="far fa-heart text-dark"></i>
             </div>
@@ -332,46 +326,82 @@ We can’t wait to share this special day with you!</h5>
                 <div class="col-md-6 border-right border-primary">
                     <div class="text-center text-md-right mr-md-3 mb-4 mb-md-0">
                         <img class="img-fluid mb-4" src="img/event-1.jpg" alt="">
-                        <h4 class="mb-3">The Church</h4>
+                        <h4 class="mb-3">The Ceremony</h4>
                         <p class="mb-2">The Redemptorist Church - Our Mother of Perpetual Help</p>
-                        <p class="mb-0">Queen's Rd, Cebu City, 6000 Cebu</p>
-                    </div>
+                        <p class="mb-0">Queen's Road, Cebu City, 6000 Cebu</p>
+<div class="map-wrapper">
+    <div class="map-container">
+        <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3925.3627191419264!2d123.89463627583508!3d10.312828867572094!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33a9994619a399c5%3A0x62ccfa864eb99b47!2sOur%20Mother%20of%20Perpetual%20Help%20-%20Redemptorist%20Church!5e0!3m2!1sen!2sph!4v1772976600901!5m2!1sen!2sph"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        allowfullscreen>
+        </iframe>
+    </div>
+</div>
+
+<style>
+.map-wrapper{
+    width:100%;
+    display:flex;
+    justify-content:center;
+}
+
+.map-container{
+    width:100%;
+    max-width:600px;
+    aspect-ratio:16/9;
+}
+
+.map-container iframe{
+    width:100%;
+    height:100%;
+    border:0;
+}
+</style>
+                   </div>
                 </div>
                 <div class="col-md-6">
                     <div class="text-center text-md-left ml-md-3">
                         <img class="img-fluid mb-4" src="img/event-2.jpg" alt="">
                         <h4 class="mb-3">The Reception</h4>
-                        <p class="mb-2">Waterfront Cebu City Hotel & Casino</p>
-                        <p class="mb-0">Salinas Dr, Lahug, Cebu City, 6000 Cebu</p>
-                    </div>
+                        <p class="mb-2">The Arctic Ballroom, Waterfront Cebu City Hotel & Casino</p>
+                        <p class="mb-0">Salinas Drive, Lahug, Cebu City, 6000 Cebu</p>
+<div class="map-wrapper">
+    <div class="map-container">
+        <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3925.2134341472797!2d123.90192937583528!3d10.324797067360088!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33a9993ccf8d81f1%3A0xc975b10a18d14aa8!2sWaterfront%20Cebu%20City%20Hotel%20%26%20Casino!5e0!3m2!1sen!2sph!4v1772976520668!5m2!1sen!2sph"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        allowfullscreen>
+        </iframe>
+    </div>
+</div>
+
+<style>
+.map-wrapper{
+    width:100%;
+    display:flex;
+    justify-content:center;
+}
+
+.map-container{
+    width:100%;
+    max-width:600px;
+    aspect-ratio:16/9;
+}
+
+.map-container iframe{
+    width:100%;
+    height:100%;
+    border:0;
+}
+</style>
+                   </div>
                 </div>
             </div>
 			<br/><br/>
-            <div class="section-title position-relative text-center">
-                <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;"></h6>
-                <h1 class="font-secondary display-4">What to wear?</h1>
-                <i class="far fa-heart text-dark"></i>
-            </div><center>
-                <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">Our Sponsors</h6>
-				<img src="img/attire/sponsor.png" alt="Sponsors Dress Code"
-     class="img-fluid d-block mx-auto">
-                 <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">Our Guests</h6>
-				 <img src="img/attire/guest.png" alt="Guests Dress Code"
-     class="img-fluid d-block mx-auto"><br/><br/>
-                 <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">Our Color Motif</h6>
-				 				 <img src="img/attire/shades.png" alt="Color Dress Code"
-     class="img-fluid d-block mx-auto">
-  </center>
-  <br/><BR/>
-              <div class="section-title position-relative text-center">
-                <h1 class="font-secondary display-4">A Note on Gifts</h1>
-                <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">With Love & Gratitude</h6>
-                <i class="far fa-heart text-dark"></i>
-            </div><center>
-			<h5 class="font-weight-normal text-muted mb-3 pb-3">Having you celebrate with us is already the best gift we could ask for. But if you’d like to bless us with something more, a small cash gift would be greatly appreciated as we begin our married life together. Our kitchen is already fully stocked and has kindly requested no more rice cookers, plates, or cups. A QR code is available below for convenience.</h5>       
-		<br/>
-		  <p><b>Scan the QR code below:</b></p>
-  <img src="img/gift/qr.png" alt="QR Code" class="qr-code"></center></div>
+ 
     </div>
     <!-- Event End -->
 
@@ -380,6 +410,7 @@ We can’t wait to share this special day with you!</h5>
     <div class="container-fluid py-5" id="family">
         <div class="container pt-5 pb-3">
 		        <div class="section-title position-relative text-center">
+                <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">THE ENTOURAGE</h6>
                 <h1 class="font-secondary display-4">With the Blessings of Our Parents</h1>
                 <i class="far fa-heart text-dark"></i>
             </div>
@@ -391,7 +422,7 @@ We can’t wait to share this special day with you!</h5>
         <div class="col-md-4 mb-4">
             <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">Groom's Parents</h6>
 
-            <p>Mr. Ernesto Montellano Pidlaoan Jr.</p>
+            <p>Engr. Ernesto Montellano Pidlaoan Jr.</p>
             <p>Mrs. Juliet Gozun Pidlaoan</p>
         </div>
 
@@ -399,258 +430,14 @@ We can’t wait to share this special day with you!</h5>
         <div class="col-md-4 mb-4">
             <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">Bride's Parents</h6>
 
-            <p>Mr. Pablo Corsino III</p>
+            <p>Engr. Pablo Diaz Corsino III</p>
             <p>Mrs. Ammie Galario Corsino</p>
         </div>
 
 
 </div>
-
-</div>			
+       <div class="container py-5">
             <div class="section-title position-relative text-center">
-			
-                <h1 class="font-secondary display-4">Groomsmen & Bridesmaid</h1>
-                <i class="far fa-heart text-dark"></i>
-            </div>
-            <div class="row">
-                <div class="col-12 text-center mb-2">
-                    <ul class="list-inline mb-4" id="portfolio-flters">
-                        <li class="btn btn-outline-primary font-weight-bold m-1 py-2 px-4" data-filter=".first">Groomsmen</li>
-                        <li class="btn btn-outline-primary font-weight-bold m-1 py-2 px-4" data-filter=".second">Bridesmaid</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="row portfolio-container">
-                <div class="col-lg-4 col-md-6 mb-4 portfolio-item first">
-                    <div class="position-relative mb-2">
-                        <img class="img-fluid w-100" src="img/groomsmen-1.jpg" alt="">
-                        <div class="bg-secondary text-center p-4">
-                            <h4 class="mb-3">RUED</h4>
-                            <p class="text-uppercase">BEST MAN</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4 portfolio-item second">
-                    <div class="position-relative mb-2">
-                        <img class="img-fluid w-100" src="img/bridesmaid-1.jpg" alt="">
-                        <div class="bg-secondary text-center p-4">
-                            <h4 class="mb-3">CHARLENE MARIE</h4>
-                            <p class="text-uppercase">MAID OF HONOR</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4 portfolio-item first">
-                    <div class="position-relative mb-2">
-                        <img class="img-fluid w-100" src="img/groomsmen-1.jpg" alt="">
-                        <div class="bg-secondary text-center p-4">
-                            <h4 class="mb-3">KENT MARIEL</h4>
-                            <p class="text-uppercase">GROOMSMEN</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4 portfolio-item second">
-                    <div class="position-relative mb-2">
-                        <img class="img-fluid w-100" src="img/bridesmaid-2.jpg" alt="">
-                        <div class="bg-secondary text-center p-4">
-                            <h4 class="mb-3">MAE</h4>
-                            <p class="text-uppercase">BRIDESMAID</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4 portfolio-item second">
-                    <div class="position-relative mb-2">
-                        <img class="img-fluid w-100" src="img/bridesmaid-2.jpg" alt="">
-                        <div class="bg-secondary text-center p-4">
-                            <h4 class="mb-3">JEN LIM</h4>
-                            <p class="text-uppercase">BRIDESMAID</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4 portfolio-item second">
-                    <div class="position-relative mb-2">
-                        <img class="img-fluid w-100" src="img/bridesmaid-2.jpg" alt="">
-                        <div class="bg-secondary text-center p-4">
-                            <h4 class="mb-3">KARLA</h4>
-                            <p class="text-uppercase">BRIDESMAID</p>
-                        </div>
-                    </div>
-                </div>
-				
-                <div class="col-lg-4 col-md-6 mb-4 portfolio-item second">
-                    <div class="position-relative mb-2">
-                        <img class="img-fluid w-100" src="img/bridesmaid-2.jpg" alt="">
-                        <div class="bg-secondary text-center p-4">
-                            <h4 class="mb-3">ANTONETTE</h4>
-                            <p class="text-uppercase">BRIDESMAID</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4 portfolio-item second">
-                    <div class="position-relative mb-2">
-                        <img class="img-fluid w-100" src="img/bridesmaid-2.jpg" alt="">
-                        <div class="bg-secondary text-center p-4">
-                            <h4 class="mb-3">ROSEVEL</h4>
-                            <p class="text-uppercase">BRIDESMAID</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4 portfolio-item first">
-                    <div class="position-relative mb-2">
-                        <img class="img-fluid w-100" src="img/groomsmen-3.jpg" alt="">
-                        <div class="bg-secondary text-center p-4">
-                            <h4 class="mb-3">JAN LAURENT</h4>
-                            <p class="text-uppercase">GROOMSMEN</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4 portfolio-item second">
-                    <div class="position-relative mb-2">
-                        <img class="img-fluid w-100" src="img/bridesmaid-2.jpg" alt="">
-                        <div class="bg-secondary text-center p-4">
-                            <h4 class="mb-3">KAYE</h4>
-                            <p class="text-uppercase">BRIDESMAID</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4 portfolio-item first">
-                    <div class="position-relative mb-2">
-                        <img class="img-fluid w-100" src="img/groomsmen-3.jpg" alt="">
-                        <div class="bg-secondary text-center p-4">
-                            <h4 class="mb-3">HAXYL</h4>
-                            <p class="text-uppercase">GROOSMEN</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4 portfolio-item second">
-                    <div class="position-relative mb-2">
-                        <img class="img-fluid w-100" src="img/bridesmaid-2.jpg" alt="">
-                        <div class="bg-secondary text-center p-4">
-                            <h4 class="mb-3">JEN YBANEZ</h4>
-                            <p class="text-uppercase">BRIDESMAID</p>
-                        </div>
-                    </div>
-                </div>
-				                <div class="col-lg-4 col-md-6 mb-4 portfolio-item first">
-                    <div class="position-relative mb-2">
-                        <img class="img-fluid w-100" src="img/groomsmen-3.jpg" alt="">
-                        <div class="bg-secondary text-center p-4">
-                            <h4 class="mb-3">EDMIR</h4>
-                            <p class="text-uppercase">GROOMSMEN</p>
-                        </div>
-                    </div>
-                </div>
-				                <div class="col-lg-4 col-md-6 mb-4 portfolio-item first">
-                    <div class="position-relative mb-2">
-                        <img class="img-fluid w-100" src="img/groomsmen-3.jpg" alt="">
-                        <div class="bg-secondary text-center p-4">
-                            <h4 class="mb-3">HARGYL</h4>
-                            <p class="text-uppercase">GROOMSMEN</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4 portfolio-item second">
-                    <div class="position-relative mb-2">
-                        <img class="img-fluid w-100" src="img/bridesmaid-2.jpg" alt="">
-                        <div class="bg-secondary text-center p-4">
-                            <h4 class="mb-3">MARIA</h4>
-                            <p class="text-uppercase">BRIDESMAID</p>
-                        </div>
-                    </div>
-                </div>
-				                <div class="col-lg-4 col-md-6 mb-4 portfolio-item first">
-                    <div class="position-relative mb-2">
-                        <img class="img-fluid w-100" src="img/groomsmen-3.jpg" alt="">
-                        <div class="bg-secondary text-center p-4">
-                            <h4 class="mb-3">PAUL EMMANUEL</h4>
-                            <p class="text-uppercase">GROOSMEN</p>
-                        </div>
-                    </div>
-                </div>
-				                <div class="col-lg-4 col-md-6 mb-4 portfolio-item first">
-                    <div class="position-relative mb-2">
-                        <img class="img-fluid w-100" src="img/groomsmen-3.jpg" alt="">
-                        <div class="bg-secondary text-center p-4">
-                            <h4 class="mb-3">REY ANTHONY</h4>
-                            <p class="text-uppercase">GROOSMEN</p>
-                        </div>
-                    </div>
-                </div>
-				                <div class="col-lg-4 col-md-6 mb-4 portfolio-item first">
-                    <div class="position-relative mb-2">
-                        <img class="img-fluid w-100" src="img/groomsmen-3.jpg" alt="">
-                        <div class="bg-secondary text-center p-4">
-                            <h4 class="mb-3">FENZ RAZEL</h4>
-                            <p class="text-uppercase">GROOMSMEN</p>
-                        </div>
-                    </div>
-                </div>
-				                <div class="col-lg-4 col-md-6 mb-4 portfolio-item first">
-                    <div class="position-relative mb-2">
-                        <img class="img-fluid w-100" src="img/groomsmen-3.jpg" alt="">
-                        <div class="bg-secondary text-center p-4">
-                            <h4 class="mb-3">JELL</h4>
-                            <p class="text-uppercase">GROOMSMEN</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4 portfolio-item second">
-                    <div class="position-relative mb-2">
-                        <img class="img-fluid w-100" src="img/bridesmaid-3.jpg" alt="">
-                        <div class="bg-secondary text-center p-4">
-                            <h4 class="mb-3">REINE</h4>
-                            <p class="text-uppercase">BRIDESMAID</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-			<div class="container-fluid secondary-sponsors text-center text-BLUE py-5">
-    
-        <div class="container py-5">
-            <div class="section-title position-relative text-center">
-                <h1 class="font-secondary display-4">Our Bearers & Flower Girls</h1>
-                <i class="far fa-heart text-dark"></i>
-            </div>
-
-    <div class="row justify-content-center">
-
-        <div class="col-md-4 mb-4">
-            <h3 class="script-title">RING</h3>
-            <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">Yugo Akio Quijano</h6>
-        </div>
-
-        <div class="col-md-4 mb-4">
-            <h3 class="script-title">BIBLE</h3>
-            <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">Jexyll Pidlaoan</h6>
-        </div>
-
-        <div class="col-md-4 mb-4">
-            <h3 class="script-title">COIN</h3>
-            <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">Azryl Blayze Galario</h6>
-        </div>
-		
-        <div class="col-md-4 mb-4">
-            <h3 class="script-title">FLOWER GIRLS</h3>
-            <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">Name 1</h6>
-            <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">Name 2</h6>
-            <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">Freya Elaine Pidlaoan </h6>
-        </div>
-
-    </div>
-
-</div>
-
-</div>
-
-        </div>
-    </div>
-    <!-- Friends & Family End -->
-
-
-    <!-- RSVP Start -->
-    <div class="container-fluid py-5" id="rsvp">
-        <div class="container py-5">
-            <div class="section-title position-relative text-center">
-                <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">PIDLAOAN - CORSINO'S</h6>
                 <h1 class="font-secondary display-4">Principal Sponsors</h1>
                 <i class="far fa-heart text-dark"></i>
             </div>
@@ -714,6 +501,179 @@ We can’t wait to share this special day with you!</h5>
         </div>
 
     </div>
+</div>			
+            <div class="section-title position-relative text-center">
+			
+                <h1 class="font-secondary display-4">Groomsmen & Bridesmaid</h1>
+                <i class="far fa-heart text-dark"></i>
+            </div>
+<div class="row mt-5">
+    <!-- LEFT COLUMN -->
+    <div class="col-md-6 text-md-right text-center">
+		<h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">Best Man</h6>
+        <p>Mr. Rued Torres</p>
+		<h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">Groomsmen</h6>
+        <p>Mr. Haxyl Pidlaoan</p>
+        <p>Mr. Hargyl Pidlaoan</p>
+        <p>Mr. Paul Emmanuel Corsino</p>
+        <p>Mr. Rey Anthony Baguio</p>
+        <p>Mr. Jan Laurent Mata</p>
+        <p>Mr. Kent Mariel Linao</p>
+        <p>Mr. Edmir Fuentes</p>
+        <p>Mr. Fenz Razel Apiag</p>
+        <p>Mr. Jell Mercader</p>
+    </div>
+
+    <!-- RIGHT COLUMN -->
+    <div class="col-md-6 text-md-left text-center">
+		<h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">Maid of Honor</h6>
+        <p>Ms. Charlene Mae Corsino</p>	
+		<h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">Bridesmaid</h6>
+        <p>Ms. Jennifer Ybanez</p>
+        <p>Ms. Angelica Joyce Apiag</p>
+        <p>Ms. Karla Mae Getigan</p>
+        <p>Ms. Marie Josephine Corsino</p>
+        <p>Ms. Jennifer Lim</p>
+        <p>Ms. Rosevel Odal</p>
+        <p>Ms. Christine Mae Cinco</p>
+        <p>Ms. Kaye Sia</p>
+        <p>Ms. Antonette Villapez</p>
+    </div>
+
+
+</div>
+
+			<div class="container-fluid secondary-sponsors text-center text-BLUE py-5">
+        <div class="row justify-content-center">
+
+        <div class="col-md-4 mb-4">
+            <h6 class="script-title">BRIDESMEN</h6>
+        <p>Mr. Reine Nichole Roma</p>	
+		        <p>Mr. Mark Lorenz Malicdem</p>	
+		        <p>Mr. Jefferson Jimenez</p>	
+		    </div>
+			</div>
+        <div class="container py-5">
+            <div class="section-title position-relative text-center">
+                <h1 class="font-secondary display-4">Our Bearers & Flower Girls</h1>
+                <i class="far fa-heart text-dark"></i>
+            </div>
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-4 mb-4">
+            <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">RING</h6>
+            <p>Yugo Akio Quijano</p>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">BIBLE</h6>
+            <p>Jexyll Pidlaoan</p>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">COIN</h6>
+            <p>Azryl Blayze Galario</p>
+        </div>
+		
+        <div class="col-md-4 mb-4">
+            <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">FLOWER GIRLS</h6>
+            <p>Alison Reign Bariquit</p>
+            <p>Nathalie Claire Gilig</p>
+            <p>Freya Elaine Pidlaoan </p>
+        </div>
+
+    </div>
+
+</div>
+
+</div>
+
+        </div>
+    </div>
+    <!-- Friends & Family End -->
+
+
+    <!-- RSVP Start -->
+    <div class="container-fluid py-5" id="rsvp">
+            <div class="section-title position-relative text-center">
+                <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;"></h6>
+                <h1 class="font-secondary display-4">What to wear?</h1>
+                <i class="far fa-heart text-dark"></i>
+            </div><center>
+							<p class="text-primary mb-3" style="letter-spacing: 1px;">Time to bring out your finest! Please come in formal attire as shown in the photo. Think elegant, stylish, and camera-ready—we want this wedding to be one for the books (and the photos).
+<br/><br/>
+We’re only asking this one little favor: dress up with us for this one special day. It would mean the world to see everyone looking their best as we celebrate together.
+<br/><br/>
+Scroll down below to see the dress code and color motif.</p><br/>
+  
+                <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 1px;">Sponsors Dress Code</h6>
+				<img src="img/attire/sponsor.png" alt="Sponsors Dress Code"
+     class="img-fluid d-block mx-auto"><br/>
+                 <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 1px;">Guests Dress Code</h6>
+				 <img src="img/attire/guest.png" alt="Guests Dress Code"
+     class="img-fluid d-block mx-auto"><br/>
+               <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">Color Motif</h6>
+<div class="palette">
+  
+  <div class="color-box">
+    <div class="circle gray"></div>
+    <p>Gray</p>
+  </div>
+
+  <div class="color-box">
+    <div class="circle navy"></div>
+    <p>Navy Blue</p>
+  </div>
+
+</div>
+
+<style>
+.palette{
+    display:flex;
+    justify-content:center;
+    gap:40px;
+    margin-top:20px;
+}
+
+.color-box{
+    text-align:center;
+    font-family:Arial, sans-serif;
+}
+
+.circle{
+    width:80px;
+    height:80px;
+    border-radius:50%;
+    margin-bottom:10px;
+    border:4px solid #ddd;
+}
+
+.gray{
+    background:#808080;
+}
+
+.navy{
+    background:#0b1f4d;
+}
+
+.color-box p{
+    font-size:16px;
+    font-weight:500;
+    margin:0;
+}
+</style>
+  </center>
+  <br/><BR/>
+              <div class="section-title position-relative text-center">
+                <h1 class="font-secondary display-4">A Note on Gifts</h1>
+                <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">With Love & Gratitude</h6>
+                <i class="far fa-heart text-dark"></i>
+            </div><center>
+			<h5 class="font-weight-normal text-muted mb-3 pb-3">Having you celebrate with us is already the best gift we could ask for. But if you’d like to bless us with something more, a small cash gift would be greatly appreciated as we begin our married life together. Our kitchen is already fully stocked and has kindly requested no more rice cookers, plates, or cups. A QR code is available below for convenience.</h5>       
+		<br/>
+		  <p><b>Scan the QR code below:</b></p>
+  <img src="img/gift/qr.png" alt="QR Code" class="qr-code"></center></div>
 
 </div>
 
