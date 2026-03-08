@@ -4361,7 +4361,30 @@ input[type="button"].btn-block {
   color: #fff;
 }
 
+.timeline {
+    position: relative;
+    padding: 2rem 0;
+}
 
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%; /* center line */
+    width: 4px; /* thickness of the line */
+    background-color: #dee2e6; /* light gray line */
+    transform: translateX(-50%);
+}
+
+.timeline .row {
+    position: relative;
+}
+
+.timeline .bg-secondary {
+    position: relative;
+    z-index: 1;
+}
 
 .card {
   position: relative;
