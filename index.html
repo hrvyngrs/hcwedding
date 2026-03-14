@@ -54,6 +54,47 @@
 
   <div class="typing-text" id="typing-text">Forever begins..<span class="cursor">|</span></div>
 </div>
+
+<script>
+window.addEventListener('load', () => {
+  const fillRect = document.getElementById('fill-rect');
+  const loader = document.getElementById('loader');
+  const mainContent = document.getElementById('main-content');
+  const typingText = document.getElementById('typing-text');
+
+  let start = null;
+  const duration = 3000; // heart fill duration
+  const maxHeight = 22;
+
+  // Animate heart fill
+  function animate(timestamp) {
+    if (!start) start = timestamp;
+    const elapsed = timestamp - start;
+    const progress = Math.min(elapsed / duration, 1);
+    const currentHeight = maxHeight * progress;
+    fillRect.setAttribute('y', maxHeight - currentHeight);
+    fillRect.setAttribute('height', currentHeight);
+    if (progress < 1) {
+      requestAnimationFrame(animate);
+    } else {
+      // fade out loader after heart fills
+      loader.style.transition = "opacity 0.5s ease";
+      loader.style.opacity = 0;
+      setTimeout(() => {
+        loader.style.display = "none";
+        mainContent.style.display = "block";
+      }, 500);
+    }
+  }
+
+  requestAnimationFrame(animate);
+
+  // Fade out cursor after typing finishes (2s)
+  setTimeout(() => {
+    typingText.classList.add('finished');
+  }, 1500); // match typing duration
+});
+</script>
 <!-- SECURITY START HRVS -->
 <style>
   body.blur {
@@ -179,46 +220,6 @@ body {
 }
 </style>
 
-<script>
-window.addEventListener('load', () => {
-  const fillRect = document.getElementById('fill-rect');
-  const loader = document.getElementById('loader');
-  const mainContent = document.getElementById('main-content');
-  const typingText = document.getElementById('typing-text');
-
-  let start = null;
-  const duration = 5000; // heart fill duration
-  const maxHeight = 22;
-
-  // Animate heart fill
-  function animate(timestamp) {
-    if (!start) start = timestamp;
-    const elapsed = timestamp - start;
-    const progress = Math.min(elapsed / duration, 1);
-    const currentHeight = maxHeight * progress;
-    fillRect.setAttribute('y', maxHeight - currentHeight);
-    fillRect.setAttribute('height', currentHeight);
-    if (progress < 1) {
-      requestAnimationFrame(animate);
-    } else {
-      // fade out loader after heart fills
-      loader.style.transition = "opacity 0.5s ease";
-      loader.style.opacity = 0;
-      setTimeout(() => {
-        loader.style.display = "none";
-        mainContent.style.display = "block";
-      }, 500);
-    }
-  }
-
-  requestAnimationFrame(animate);
-
-  // Fade out cursor after typing finishes (2s)
-  setTimeout(() => {
-    typingText.classList.add('finished');
-  }, 2000); // match typing duration
-});
-</script>
 <body data-spy="scroll" data-target=".navbar" data-offset="51">
     <!-- Navbar Start -->
     <nav class="navbar fixed-top shadow-sm navbar-expand-lg bg-dark navbar-dark py-3 py-lg-0 px-lg-5">
@@ -557,8 +558,8 @@ document.addEventListener('click', () => {
     <div class="col-md-6 mb-4 mb-md-0">
         <div class="text-center text-md-left p-3 p-md-4">
             <img class="img-fluid mb-4" src="img/event-2.jpg" alt="Reception" style="object-fit:cover; max-height:300px; width:100%;">
-            <h4 class="mb-3">Reception</h4>
-            <p class="mb-2">The Arctic Ballroom, Waterfront Cebu City Hotel & Casino</p>
+            <h4 class="mb-3">The Reception</h4>
+            <p class="mb-2">Arctic Ballroom, Waterfront Cebu City Hotel & Casino</p>
             <p class="mb-3">1 Salinas Drive, Lahug, Cebu City, 6000 Cebu</p>
             
             <div class="map-wrapper">
@@ -912,11 +913,15 @@ document.addEventListener('click', () => {
       <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 1px;">Sponsors</h6>
       <img src="img/attire/sponsor.png" alt="Sponsors Dress Code" 
            style="max-width: 100%; max-height: 180px; object-fit: contain; display: block; margin: 0 auto;">
+        <p><strong>Men</strong>: Suit or Tuxedo</p>
+        <p><strong>Women</strong>: Gown</p>
     </td>
     <td style="border: 2px solid #003366; border-radius: 10px; padding: 15px; vertical-align: top; text-align: center;">
       <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 1px;">Guests</h6>
       <img src="img/attire/guest.png" alt="Guests Dress Code" 
            style="max-width: 100%; max-height: 180px; object-fit: contain; display: block; margin: 0 auto;">
+        <p><strong>Men</strong>: Long-sleeve formal suit or Tuxedo</p>
+        <p><strong>Women</strong>: Formal Dress or Cocktail Dress</p>
     </td>
   </tr>
 </table>
@@ -938,7 +943,6 @@ document.addEventListener('click', () => {
 <hr style="border: 1px solid #003366; width: 50%; margin: 30px auto;">
               <div class="section-title position-relative text-center">
                 <h1 class="font-secondary display-4">Note on Gifts</h1>
-                <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">With Love & Gratitude</h6>
                 <i class="far fa-heart text-dark"></i>
             </div>
             <center>
