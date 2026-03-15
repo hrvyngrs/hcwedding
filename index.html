@@ -1,1043 +1,233 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8">
-    <title>Pidlaoan & Corsino's Wedding</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="Harvy & Christine's Wedding" name="keywords">
-    <meta content="Harvy & Christine's Wedding" name="description">
-
-    <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
-
-    <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;600&display=swap" rel="stylesheet"> 
-
-    <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-
-    <!-- Libraries Stylesheet -->
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
-
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
-</head>
-<!-- LOADER -->
-<div id="loader" style="position:fixed; top:0; left:0; width:100%; height:100%; background:#fff; display:flex; flex-direction: column; justify-content:center; align-items:center; z-index:9999;">
-  <svg id="heart-loader" width="120" height="110" viewBox="0 0 24 22" fill="none" xmlns="http://www.w3.org/2000/svg" style="overflow: visible; margin-bottom: 20px;">
-    <defs>
-      <mask id="fill-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="22">
-        <rect id="fill-rect" x="0" y="22" width="24" height="0" fill="white" />
-      </mask>
-    </defs>
-    <!-- Heart outline -->
-    <path
-      d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 
-         7.5 3c1.74 0 3.41 0.81 4.5 2.09C13.09 3.81 14.76 3 
-         16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 
-         11.54L12 21.35z"
-      fill="#ddd"
-    />
-    <!-- Navy blue fill -->
-    <path
-      d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 
-         7.5 3c1.74 0 3.41 0.81 4.5 2.09C13.09 3.81 14.76 3 
-         16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 
-         11.54L12 21.35z"
-      fill="#001F54"
-      mask="url(#fill-mask)"
-    />
-  </svg>
-
-  <div class="typing-text" id="typing-text">Forever begins..<span class="cursor">|</span></div>
-</div>
-
-<script>
-window.addEventListener('load', () => {
-  const fillRect = document.getElementById('fill-rect');
-  const loader = document.getElementById('loader');
-  const mainContent = document.getElementById('main-content');
-  const typingText = document.getElementById('typing-text');
-
-  let start = null;
-  const duration = 3000; // heart fill duration
-  const maxHeight = 22;
-
-  // Animate heart fill
-  function animate(timestamp) {
-    if (!start) start = timestamp;
-    const elapsed = timestamp - start;
-    const progress = Math.min(elapsed / duration, 1);
-    const currentHeight = maxHeight * progress;
-    fillRect.setAttribute('y', maxHeight - currentHeight);
-    fillRect.setAttribute('height', currentHeight);
-    if (progress < 1) {
-      requestAnimationFrame(animate);
-    } else {
-      // fade out loader after heart fills
-      loader.style.transition = "opacity 0.5s ease";
-      loader.style.opacity = 0;
-      setTimeout(() => {
-        loader.style.display = "none";
-        mainContent.style.display = "block";
-      }, 500);
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Harvy & Christine Wedding</title>
+<style>
+    :root {
+        --navy: #001f3f;
+        --navy-dark: #001226;
+        --gold: #cfa07d;
+        --bg-cream: #f4f1ee;
     }
-  }
 
-  requestAnimationFrame(animate);
+    body {
+        font-family: 'Georgia', serif;
+        margin: 0;
+        background: var(--bg-cream);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        overflow-y: auto;
+        padding: 40px 0;
+    }
 
-  // Fade out cursor after typing finishes (2s)
-  setTimeout(() => {
-    typingText.classList.add('finished');
-  }, 1500); // match typing duration
-});
-</script>
-<!-- SECURITY START HRVS -->
-<style>
-  body.blur {
-    filter: blur(10px);
-  }
+    #landing {
+        text-align: center;
+        width: 100%;
+        max-width: 600px;
+    }
+
+    /* 1. Envelope Container */
+    #envelope-wrapper {
+        position: relative;
+        width: 350px;
+        height: 230px;
+        margin: 0 auto 50px;
+        cursor: pointer;
+        perspective: 1500px;
+    }
+
+    #envelope {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--navy);
+        border-radius: 4px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        z-index: 10; /* Base envelope layer */
+    }
+
+    #flap {
+        position: absolute;
+        top: 0; left: 0;
+        width: 0; height: 0;
+        border-left: 175px solid transparent;
+        border-right: 175px solid transparent;
+        border-top: 130px solid var(--navy-dark);
+        z-index: 20;
+        transform-origin: top;
+        transition: transform 0.7s ease-in-out;
+    }
+
+    #wax-seal {
+        position: absolute;
+        top: 100px; left: 50%;
+        transform: translateX(-50%);
+        width: 50px; height: 50px;
+        background: #d4a5a5;
+        border-radius: 50%;
+        z-index: 25;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        display: flex; justify-content: center; align-items: center;
+        color: white; font-weight: bold;
+        transition: opacity 0.4s;
+    }
+
+    /* 2. The Cards (Resting ABOVE the envelope) */
+    .card-container {
+        position: absolute;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        gap: -10px; /* Slight overlap */
+        z-index: 5; /* Initially behind */
+        opacity: 0;
+        transition: transform 1s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.6s, z-index 0s 0.5s;
+    }
+
+    .card {
+        width: 180px;
+        height: 260px;
+        border-radius: 2px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    #card-left {
+        background: var(--navy);
+        color: white;
+        transform: rotate(-4deg);
+    }
+
+    #card-right {
+        background: white;
+        border: 1px solid #ddd;
+        color: #333;
+        transform: rotate(3deg);
+    }
+
+    /* Card Content Styling */
+    .card h3 { font-size: 0.7rem; letter-spacing: 2px; margin-bottom: 30px; }
+    .card h2 { font-style: italic; font-size: 1.5rem; margin: 10px 0; }
+    .date-num { font-size: 2.2rem; margin: 5px 0; font-weight: bold; }
+    .month-line { border-top: 1px solid #ccc; border-bottom: 1px solid #ccc; padding: 5px 0; margin: 10px 0; }
+
+    /* OPEN STATE ANIMATIONS */
+    #envelope-wrapper.open #flap {
+        transform: rotateX(180deg);
+        z-index: 2; /* Move flap behind cards */
+    }
+
+    #envelope-wrapper.open #wax-seal { opacity: 0; }
+
+    #envelope-wrapper.open .card-container {
+        opacity: 1;
+        /* Pulls the cards DOWN to sit on the envelope body */
+        transform: translateX(-50%) translateY(100px); 
+        z-index: 30; /* Bring to very front */
+    }
+
+    /* 3. Form Section */
+    #formContainer {
+        display: none; opacity: 0;
+        margin-top: 180px; /* Space for the cards to rest */
+        transition: opacity 1s;
+    }
+
+    .input-group {
+        display: flex;
+        justify-content: center;
+        gap: 5px;
+        max-width: 350px;
+        margin: 20px auto;
+    }
+
+    input { padding: 12px; border: 1px solid #ccc; flex: 1; }
+    .btn-check { background: var(--navy); color: white; border: none; padding: 0 20px; cursor: pointer; }
+    .proceed-btn { display: inline-block; margin-top: 15px; padding: 12px 30px; background: var(--gold); color: white; text-decoration: none; border-radius: 4px; font-weight: bold; font-family: sans-serif; }
 </style>
+</head>
+<body>
 
-<script>
-document.addEventListener("visibilitychange", function() {
-  if (document.hidden) {
-    document.body.classList.add("blur");
-  } else {
-    document.body.classList.remove("blur");
-  }
-});
-</script>
-<script>
-document.addEventListener("contextmenu", event => event.preventDefault());
+<div id="landing">
+    <div id="envelope-wrapper" onclick="openEnvelope()">
+        <div id="flap"></div>
+        <div id="wax-seal">H&C</div>
+        <div id="envelope"></div>
 
-document.onkeydown = function(e) {
-  if (e.keyCode == 123) { // F12
-    return false;
-  }
-  if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
-    return false;
-  }
-}
-</script>
-
-
-<style>
-.watermark{
-  position:fixed;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%) rotate(-30deg);
-  font-size:60px;
-  color:rgba(0,0,0,0.1);
-  pointer-events:none;
-}
-</style>
-<script>
-document.addEventListener("keyup", function(e) {
-  if (e.key === "PrintScreen") {
-    alert("Screenshots are not allowed.");
-  }
-});
-</script>
-<style>
-.blur {
-  filter: blur(12px);
-}
-</style>
-
-<script>
-document.addEventListener("visibilitychange", function () {
-  if (document.hidden) {
-    document.body.classList.add("blur");
-  } else {
-    document.body.classList.remove("blur");
-  }
-});
-</script>
-<style>
-img {
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  user-select: none;
-  pointer-events: none;
-}
-</style>
-<style>
-body {
-  -webkit-user-select: none;
-  user-select: none;
-}
-</style>
-
-<!-- SECURITY END HRVS -->
-<!-- MAIN CONTENT -->
-<div id="main-content" style="display:none;">
-  <!-- Your wedding page HTML here -->
-</div>
-
-<style>
-.typing-text {
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 18px;
-  color: #001F54;
-  white-space: nowrap;
-  overflow: hidden;
-  border-right: .15em solid #001F54;
-  width: 0;
-  animation:
-    typing 2s steps(17, end) forwards, /* typing 2 seconds for 17 characters */
-    blink-caret 0.75s step-end infinite;
-}
-
-/* Blinking cursor */
-.cursor {
-  display: inline-block;
-  color: #001F54;
-  animation: blink-caret 0.75s step-end infinite;
-}
-
-/* typing animation */
-@keyframes typing {
-  from { width: 0; }
-  to { width: 17ch; }
-}
-
-/* blinking caret */
-@keyframes blink-caret {
-  50% { border-color: transparent; }
-  100% { border-color: #001F54; }
-}
-
-/* fade out cursor after typing finishes */
-.typing-text.finished .cursor {
-  animation: none;
-  opacity: 0;
-  transition: opacity 0.5s ease;
-}
-</style>
-
-<body data-spy="scroll" data-target=".navbar" data-offset="51">
-    <!-- Navbar Start -->
-    <nav class="navbar fixed-top shadow-sm navbar-expand-lg bg-dark navbar-dark py-3 py-lg-0 px-lg-5">
-        <a href="index.html" class="navbar-brand d-block d-lg-none">
-            <h1 class="font-secondary text-white mb-n2">H & C</h1>
-        </a>
-        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-            <div class="navbar-nav ml-auto py-0">
-                <a href="#home" class="nav-item nav-link active">Home</a>
-                <a href="#about" class="nav-item nav-link">About Us</a>
-                <a href="#story" class="nav-item nav-link">Our Story</a>
-                <a href="#gallery" class="nav-item nav-link">Gallery</a>
+        <div class="card-container">
+            <div class="card" id="card-left">
+                <h3>INTRODUCING</h3>
+                <br>
+                <h2>Harvy &<br>Christine</h2>
             </div>
-            <a href="index.html" class="navbar-brand mx-5 d-none d-lg-block">
-                <h1 class="font-secondary text-white mb-n2">H & C</h1>
-            </a>
-            <div class="navbar-nav mr-auto py-0">
-                <a href="#event" class="nav-item nav-link">Event Info</a>
-                <a href="#family" class="nav-item nav-link">Entourage</a>
-                <a href="#rsvp" class="nav-item nav-link">Dress & Gift Guide</a>
-                <a href="#contact" class="nav-item nav-link">RSVP</a>
-            </div>
-        </div>
-    </nav>
-    <!-- Navbar End -->
-
-
-    <!-- Carousel Start -->
-    <div class="container-fluid p-0 mb-5 pb-5" id="home">
-        <div id="header-carousel" class="carousel slide carousel-fade" data-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item position-relative active" style="height: 100vh; min-height: 400px;">
-                    <img class="position-absolute w-100 h-100" src="img/carousel-1.jpg" style="object-fit: cover;">
-                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                        <div class="p-3" style="max-width: 900px;">
-                            <h1 class="display-1 font-secondary text-white mt-n3 mb-md-4">Harvy & Christine</h1>
-                            <div class="d-inline-block border-top border-bottom border-light py-3 px-4">
-                                <h3 class="text-uppercase font-weight-normal text-white m-0" style="letter-spacing: 2px;">We're getting married</h3>
-                            </div>
- <button type="button" class="btn-play mx-auto" id="playButton">
-    <span></span>
-</button>
-
-<audio id="audioPlayer" src="play.mp3"></audio>
-
-<script>
-const audioPlayer = document.getElementById('audioPlayer');
-
-document.addEventListener('click', () => {
-    audioPlayer.play();
-}, { once: true });
-</script>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item position-relative" style="height: 100vh; min-height: 400px;">
-                    <img class="position-absolute w-100 h-100" src="img/carousel-2.jpg" style="object-fit: cover;">
-                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                        <div class="p-3" style="max-width: 900px;">
-                            <h1 class="display-1 font-secondary text-white mt-n3 mb-md-4">Harvy & Christine</h1>
-                            <div class="d-inline-block border-top border-bottom border-light py-3 px-4">
-                                <h3 class="text-uppercase font-weight-normal text-white m-0" style="letter-spacing: 2px;">We're getting married</h3>
-                            </div>
-<button type="button" class="btn-play mx-auto" id="playButton">
-    <span></span>
-</button>
-
-<audio id="audioPlayer" src="play.mp3"></audio>
-
-<script>
-const audioPlayer = document.getElementById('audioPlayer');
-
-document.addEventListener('click', () => {
-    audioPlayer.play();
-}, { once: true });
-</script>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <a class="carousel-control-prev justify-content-start" href="#header-carousel" data-slide="prev">
-                <div class="btn btn-primary px-0" style="width: 68px; height: 68px;">
-                    <span class="carousel-control-prev-icon mt-3"></span>
-                </div>
-            </a>
-            <a class="carousel-control-next justify-content-end" href="#header-carousel" data-slide="next">
-                <div class="btn btn-primary px-0" style="width: 68px; height: 68px;">
-                    <span class="carousel-control-next-icon mt-3"></span>
-                </div>
-            </a>
-        </div>
-    </div>
-    <!-- Carousel End -->
-
-
-    <!-- Video Modal Start -->
-    <div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>        
-                    <!-- 16:9 aspect ratio -->
-                    <div class="embed-responsive embed-responsive-16by9">
-                        <iframe class="embed-responsive-item" src="" id="video"  allowscriptaccess="always" allow="autoplay"></iframe>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Video Modal End -->
-
-
-    <!-- About Start -->
-    <div class="container-fluid py-5" id="about">
-        <div class="container py-5">
-            <div class="section-title position-relative text-center">
-                <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">About</h6>
-                <h1 class="font-secondary display-4">Groom & Bride</h1>
-                <i class="far fa-heart text-dark"></i>
-            </div>
-  <div class="row m-0 mb-4 align-items-center">
-    <!-- Groom Text -->
-    <div class="col-md-6 order-2 order-md-1 text-center text-md-right p-4 p-md-5 bg-secondary d-flex flex-column justify-content-center">
-        <h3 class="mb-3">The Groom</h3>
-        <p>
-        The eldest of three brothers, he is a proud graduate with a Bachelor’s Degree in Industrial Engineering. Born on July 16, 1996, he is currently building his career at Lexmark Research and Development Corporation in Cebu, where his dedication, reliability, and strong work ethic continue to stand out.
-        <br/><br/>
-        Naturally calm and known for his easygoing sense of humor, he enjoys traveling, playing computer games, and exploring new places whenever the opportunity arises. He embraces adventure, holds family close to his heart, and cherishes meaningful moments spent with the people he loves.
-        <br/><br/>
-        At his core, he believes that life is best enjoyed with laughter, curiosity, and genuine connections.
-
-        </p>
-        <h3 class="font-secondary font-weight-normal text-muted mb-3">
-            <i class="fa fa-male text-primary pr-3"></i>Harvy Gozun Pidlaoan
-        </h3>
-    </div>
-    <!-- Groom Image -->
-    <div class="col-md-6 order-1 order-md-2 p-0">
-        <img src="img/about-1.jpg" class="img-fluid w-100" style="height:100%; object-fit:cover;">
-    </div>
-</div>
-
-<div class="row m-0 align-items-center">
-    <!-- Bride Image -->
-    <div class="col-md-6 order-1 order-md-1 p-0">
-        <img src="img/about-2.jpg" class="img-fluid w-100" style="height:100%; object-fit:cover;">
-    </div>
-    <!-- Bride Text -->
-    <div class="col-md-6 order-2 order-md-2 text-center text-md-left p-4 p-md-5 bg-secondary d-flex flex-column justify-content-center">
-        <h3 class="mb-3">The Bride</h3>
-        <p>
-        The eldest among three siblings, with one sister and a younger brother, she is a proud graduate with a Bachelor’s Degree in Psychology. Born on July 30, 1996, she is currently building her career at QBE Insurance – Philippine Branch, where her dedication and people-centered approach beautifully reflect her academic background.
-        <br/><br/>
-        Warm-hearted and thoughtful by nature, she loves traveling and embracing new experiences that broaden her perspective and enrich her life. She deeply values time spent with family and finds joy in creating lasting memories with the people she holds closest to her heart.
-        <br/><br/>
-        At her core, she cherishes love, meaningful connections, and the simple yet precious moments shared with those she loves most.
-        </p>
-        <h3 class="font-secondary font-weight-normal text-muted mb-3">
-            <i class="fa fa-female text-primary pr-3"></i>Christine Mae Galario Corsino
-        </h3>
-    </div>
-</div>
-        </div>
-    </div>
-    <!-- About End -->
-
-
-    <!-- Story Start -->
-    <div class="container-fluid py-5" id="story">
-        <div class="container pt-5 pb-3">
-            <div class="section-title position-relative text-center">
-                <h1 class="font-secondary display-4">The Story</h1>
-                <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">From USJ-R to Forever</h6>
-                <i class="far fa-heart text-dark"></i>
-            </div>
- <div class="container timeline p-0">
-    <!-- First Meet & Date -->
-    <div class="row align-items-center mb-4">
-        <div class="col-md-6 order-2 order-md-1 text-center text-md-right mb-3 mb-md-0">
-            <img src="img/story-1.jpg" class="img-fluid w-100" style="object-fit:cover;">
-        </div>
-        <div class="col-md-6 order-1 order-md-2 text-center text-md-left">
-            <div class="bg-secondary p-4 d-flex flex-column justify-content-center h-100">
-                <h4 class="mb-2">The Beginning of Us</h4>
-                <p>
-                <strong>Harvy</strong> and <strong>Christine</strong> attended the same college, and while they spent plenty of time chatting on Messenger, they never quite had the chance to meet in person. Harvy was extremely shy and usually preferred spending his time at the computer shop, which made face‑to‑face meet‑ups even harder to arrange.
-                <br/><br/>
-                November 2016 - marked the long‑awaited moment when, after countless attempts, they finally met at Jollibee in Gaisano Mactan. Christine took the initiative and made the plan happen, while Harvy arrived feeling a mix of excitement and obvious nervousness.
-                <br/><br/>
-                Christine came straight from school that day, carrying a large shoulder bag. Noticing it, Harvy couldn’t resist breaking the tension with a joke asking if she was already planning to move in since it looked like she had packed all her belongings with her. That playful remark sparked laughter, instantly easing their nerves and breaking the ice.
-                <br/><br/>
-                Even as they enjoyed each other’s company, Harvy kept asking if they would meet again. His nerves got the best of him and feels worried that their first meeting might also be their last, afraid the moment might never happen again.
-                <br/><br/>
-                Little did he know that day wasn’t an ending at all - it was only the beginning. What started as a simple meet‑up blossomed into a beautiful journey filled with laughter, adventures, and a shared love for travel. They now look forward to continuing that journey together as they step into a new chapter of their lives as husband and wife.
-                <br/><br/>
-                Since <strong>November 2016</strong>, Harvy patiently courted Christine, expressing his love through small gestures and heartfelt moments that made her feel truly special. 
-                <br/><br/>
-                At the <strong>USJR campus</strong> - the very place where their story began and where they first caught glimpses of each other. Harvy prepared a heartfelt surprise: 101 reasons why he loved her, carefully written and placed inside a jar.
-                <br/><br/>
-                That simple yet deeply meaningful gesture marked the start of a beautiful journey together. From that day forward, their bond only grew stronger, eventually leading them to the wedding day they now joyfully share with family and friends.
+            <div class="card" id="card-right">
+                <p style="font-size: 0.8rem;">THE WEDDING DAY</p>
+                <div class="date-num">12</div>
+                <div class="month-line">June 2026</div>
+                <p style="font-size: 0.65rem; line-height: 1.5;">
+                    AT 3:30 PM<br>
+                    GRAND RECEPTION HALL<br>
+                    CITY GARDENS
                 </p>
             </div>
         </div>
     </div>
 
-    <!-- She said 'Yes' -->
-    <div class="row align-items-center mb-4">
-        <div class="col-md-6 order-2 order-md-2 text-center text-md-left mb-3 mb-md-0">
-            <img src="img/story-2.jpg" class="img-fluid w-100" style="object-fit:cover;">
+    <div id="formContainer">
+        <p>Please enter your name for the guest list:</p>
+        <div class="input-group">
+            <input type="text" id="guestName" placeholder="Full Name">
+            <button class="btn-check" onclick="checkGuest()">Check</button>
         </div>
-        <div class="col-md-6 order-1 order-md-1 text-center text-md-right">
-            <div class="bg-secondary p-4 d-flex flex-column justify-content-center h-100">
-                <h4 class="mb-2">The Proposal</h4>
-                <p>
-                Harvy had long been dreaming of the perfect moment to ask Christine to marry him. After careful thought and planning, he chose the breathtaking island of Boracay as the setting for this once‑in‑a‑lifetime question. To make everything even more meaningful, he sought the help of Christine’s sister to ask for their parents’ blessing and ensure that every detail went smoothly.
-                <br/><br/>
-                What appeared to be a simple family getaway was, in truth, a beautifully planned surprise. Harvy made sure that both families (including his own) were part of the trip, cleverly using it as the perfect cover for what was about to unfold.
-                <br/><br/>
-                On <strong>November 9, 2024</strong>, the magic came to life at Puka Beach, with the sun casting its warm glow over the white sand and gentle waves rolling in around them. Surrounded by their loved ones and the natural beauty of the moment, Harvy asked Christine to spend the rest of her life with him.
-                <br/><br/>
-                It was a moment filled with love, laughter, and unforgettable memories, the beginning of a brand‑new chapter in their story and the start of forever.
-                </p>
-            </div>
-        </div>
-    </div>
-</div>
-        </div>
-    </div>
-    <!-- Story End -->
-
-
-    <!-- Gallery Start -->
-    <div class="container-fluid bg-gallery" id="gallery" style="padding: 120px 0; margin: 90px 0;">
-        <div class="section-title position-relative text-center" style="margin-bottom: 120px;">
-            <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">Gallery</h6>
-            <h1 class="font-secondary display-4 text-white">Just the Two of Us</h1>
-            <i class="far fa-heart text-white"></i>
-        </div>
-        <div class="owl-carousel gallery-carousel">
-            <div class="gallery-item">
-                <img class="img-fluid w-100" src="img/gallery-1.jpg" alt="">
-                <a href="img/gallery-1.jpg" data-lightbox="gallery">
-                    <i class="fa fa-2x fa-plus text-white"></i>
-                </a>
-            </div>
-            <div class="gallery-item">
-                <img class="img-fluid w-100" src="img/gallery-2.jpg" alt="">
-                <a href="img/gallery-2.jpg" data-lightbox="gallery">
-                    <i class="fa fa-2x fa-plus text-white"></i>
-                </a>
-            </div>
-            <div class="gallery-item">
-                <img class="img-fluid w-100" src="img/gallery-3.jpg" alt="">
-                <a href="img/gallery-3.jpg" data-lightbox="gallery">
-                    <i class="fa fa-2x fa-plus text-white"></i>
-                </a>
-            </div>
-            <div class="gallery-item">
-                <img class="img-fluid w-100" src="img/gallery-4.jpg" alt="">
-                <a href="img/gallery-4.jpg" data-lightbox="gallery">
-                    <i class="fa fa-2x fa-plus text-white"></i>
-                </a>
-            </div>
-            <div class="gallery-item">
-                <img class="img-fluid w-100" src="img/gallery-5.jpg" alt="">
-                <a href="img/gallery-5.jpg" data-lightbox="gallery">
-                    <i class="fa fa-2x fa-plus text-white"></i>
-                </a>
-            </div>
-            <div class="gallery-item">
-                <img class="img-fluid w-100" src="img/gallery-6.jpg" alt="">
-                <a href="img/gallery-6.jpg" data-lightbox="gallery">
-                    <i class="fa fa-2x fa-plus text-white"></i>
-                </a>
-            </div>
-        </div>
-    </div>
-    <!-- Gallery End -->
-
-
-    <!-- Event Start -->
-<div class="container-fluid py-5" id="event">
-    <div class="container py-5">
-        <!-- Section Title -->
-        <div class="section-title position-relative text-center">
-            <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">Event Details</h6>
-            <h1 class="font-secondary display-4">The Wedding Day</h1>
-            <i class="far fa-heart text-dark"></i>
-        </div>
-
-        <!-- Intro Text -->
- <div class="row justify-content-center mb-5">
-    <div class="col-md-8 text-center">
-        <p class="font-weight-normal text-muted mb-3 pb-3">
-        We’re so excited to celebrate this special day with our family and friends!
-        <br/><br/>
-        Join us on <strong>June 12, 2026</strong> | <strong>2:00 PM</strong>. at <strong>Redemptorist Church</strong> as we exchange our vows
-        <br/><br/>
-        After the ceremony, please join us for a joyful reception at <strong>Waterfront Cebu City Hotel & Casino</strong>, where we’ll continue the celebration with wonderful food, laughter, and memories we’ll cherish forever.
-        <br/><br/>
-        We can’t wait to share this beautiful moment with you!
-        </p>
+        <div id="message"></div>
     </div>
 </div>
 
-<!-- Event Details -->
-<div class="row">
-    <!-- Ceremony -->
-    <div class="col-md-6 mb-4 mb-md-0" style="border-right: 2px solid #007bff;">
-        <div class="text-center text-md-right p-3 p-md-4">
-            <img class="img-fluid mb-4" src="img/event-1.jpg" alt="Ceremony" style="object-fit:cover; max-height:300px; width:100%;">
-            <h4 class="mb-3">The Ceremony</h4>
-            <p class="mb-2">Redemptorist Church - Our Mother of Perpetual Help</p>
-            <p class="mb-3">Ramon Aboitiz St., Camputhaw, Cebu City, 6000 Cebu</p>
+<script>
+    const guests = {
+        "John Doe": 2,
+        "Jane Smith": 1,
+        "Harvy": "Unlimited",
+        "Christine": "Unlimited"
+    };
+
+    function openEnvelope() {
+        const wrapper = document.getElementById('envelope-wrapper');
+        const form = document.getElementById('formContainer');
+
+        if (!wrapper.classList.contains('open')) {
+            wrapper.classList.add('open');
             
-            <div class="map-wrapper">
-                <div class="map-container" style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden;">
-                    <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3925.3627191419264!2d123.89463627583508!3d10.312828867572094!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33a9994619a399c5%3A0x62ccfa864eb99b47!2sOur%20Mother%20of%20Perpetual%20Help%20-%20Redemptorist%20Church!5e0!3m2!1sen!2sph!4v1772976600901!5m2!1sen!2sph"
-                        loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"
-                        allowfullscreen
-                        style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;">
-                    </iframe>
-                </div>
-            </div>
-        </div>
-    </div>
+            setTimeout(() => {
+                form.style.display = 'block';
+                setTimeout(() => form.style.opacity = '1', 50);
+            }, 1200);
+        }
+    }
+
+    function checkGuest() {
+        const name = document.getElementById('guestName').value.trim();
+        const msg = document.getElementById('message');
+        
+        if (guests[name]) {
+            msg.innerHTML = `
+                <p style="color: green;">Welcome, <b>${name}</b>! You have <b>${guests[name]}</b> guest slot(s).</p>
+                <a href="main.html" class="proceed-btn">Proceed to Details</a>
+            `;
+        } else {
+            msg.innerHTML = `<p style="color: red;">Name not found on guest list.</p>`;
+        }
+    }
+</script>
 
-    <!-- Reception -->
-    <div class="col-md-6 mb-4 mb-md-0">
-        <div class="text-center text-md-left p-3 p-md-4">
-            <img class="img-fluid mb-4" src="img/event-2.jpg" alt="Reception" style="object-fit:cover; max-height:300px; width:100%;">
-            <h4 class="mb-3">The Reception</h4>
-            <p class="mb-2">Arctic Ballroom, Waterfront Cebu City Hotel & Casino</p>
-            <p class="mb-3">1 Salinas Drive, Lahug, Cebu City, 6000 Cebu</p>
-            
-            <div class="map-wrapper">
-                <div class="map-container" style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden;">
-                    <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3925.2134341472797!2                                       d123.90192937583528!3d10.324797067360088!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33a9993ccf8d81f1%3A0xc975b10a18d14aa8!2sWaterfront%20Cebu%20City%20Hotel%20%26%20Casino!5e0!3m2!1sen!2sph!4v1772976520668!5m2!1sen!2sph"
-                        loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"
-                        allowfullscreen
-                        style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;">
-                    </iframe>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-    </div>
-</div>
-
-<!-- Shared Map Styles -->
-<style>
-.map-wrapper {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
-
-.map-container {
-    width: 100%;
-    max-width: 600px;
-    aspect-ratio: 16/9;
-}
-
-.map-container iframe {
-    width: 100%;
-    height: 100%;
-    border: 0;
-}
-</style>
-    <!-- Event End -->
-
-
-    <!-- Friends & Family Start -->
-<!-- ENTIRE WEDDING PARTY / HONORED ATTENDANTS SECTION -->
-<div class="container-fluid py-5" id="family">
-
-  <!-- Section Title: Entourage -->
-  <div class="container text-center pt-5 pb-3">
-    <div class="section-title position-relative">
-      <h1 class="font-secondary display-4">Pidlaoan-Corsino Nuptials</h1>
-      <i class="far fa-heart text-dark"></i>
-    </div>
-  </div>
-
-  <!-- Parents (Centered) -->
-  <div class="container py-5 secondary-sponsors text-blue text-center">
-    <div class="row justify-content-center">
-      <div class="col-md-4 mb-4">
-        <h6 class="text-uppercase text-primary mb-3 letter-spacing">Parents of the Groom</h6>
-        <p>Engr. Ernesto Montellano Pidlaoan Jr.</p>
-        <p>Mrs. Juliet Gozun Pidlaoan</p>
-      </div>
-      <div class="col-md-4 mb-4">
-        <h6 class="text-uppercase text-primary mb-3 letter-spacing">Parents of the Bride</h6>
-        <p>Mr. Pablo Diaz Corsino III</p>
-        <p>Mrs. Ammie Galario Corsino</p>
-      </div>
-    </div>
-  </div>
-
- <!-- Principal Sponsors (Paired Left/Right) -->
-<div class="container py-5">
-  <div class="section-title text-center mb-5">
-    <h1 class="font-secondary display-4">Principal Sponsors</h1>
-    <div class="divider-heart">
-      <div class="line"></div>
-      <i class="far fa-heart"></i>
-      <div class="line"></div>
-    </div>
-  </div>
-
-  <div class="container">
-
-    <div class="row">
-      <div class="col-6 text-right"><p>Mr. Aldrin Galario</p></div>
-      <div class="col-6 text-left"><p>Mrs. Ma. Flordelis Galario</p></div>
-    </div>
-
-    <div class="row">
-      <div class="col-6 text-right"><p>Mr. Jason Quijano</p></div>
-      <div class="col-6 text-left"><p>Mrs. Rolca Marie Quijano</p></div>
-    </div>
-
-    <div class="row">
-      <div class="col-6 text-right"><p>Mr. Lantoy Seno</p></div>
-      <div class="col-6 text-left"><p>Mrs. Brenda Seno</p></div>
-    </div>
-
-    <div class="row">
-      <div class="col-6 text-right"><p>Mr. Richard Tura</p></div>
-      <div class="col-6 text-left"><p>Mrs. Helen Tura</p></div>
-    </div>
-
-    <div class="row">
-      <div class="col-6 text-right"><p>Mr. Albert Castañeda</p></div>
-      <div class="col-6 text-left"><p>Mrs. Thea Jeanette Castañeda</p></div>
-    </div>
-
-    <div class="row">
-      <div class="col-6 text-right"><p>Mr. Bonifacio Ybañez</p></div>
-      <div class="col-6 text-left"><p>Mrs. Angelita Ybañez</p></div>
-    </div>
-
-    <div class="row">
-      <div class="col-6 text-right"><p>Mr. Glemiro Dungog</p></div>
-      <div class="col-6 text-left"><p>Mrs. Juliet Dungog</p></div>
-    </div>
-
-  </div>
-</div>
-
-  <!-- Secondary Sponsors (Centered) -->
-  <div class="container py-5 secondary-sponsors text-blue text-center">
-    <div class="section-title mb-5">
-      <h1 class="font-secondary display-4">Secondary Sponsors</h1>
-      <div class="divider-heart">
-        <div class="line"></div>
-        <i class="far fa-heart"></i>
-        <div class="line"></div>
-      </div>
-    </div>
-    <div class="row justify-content-center">
-      <div class="col-md-4 mb-4">
-        <h3 class="script-title">Candle</h3>
-        <h6 class="text-uppercase text-primary mb-3 letter-spacing">TO LIGHT OUR PATH</h6>
-        <p>Mr. Bryan May Arroyo</p>
-        <p>Ms. Shenna Mie Cabahug</p>
-      </div>
-      <div class="col-md-4 mb-4">
-        <h3 class="script-title">Cord</h3>
-        <h6 class="text-uppercase text-primary mb-3 letter-spacing">TO BIND US TOGETHER</h6>
-        <p>Mr. Jan Louise Casas</p>
-        <p>Mrs. Angelica Mari Casas</p>
-      </div>
-      <div class="col-md-4 mb-4">
-        <h3 class="script-title">Veil</h3>
-        <h6 class="text-uppercase text-primary mb-3 letter-spacing">TO CLOTHE US AS ONE</h6>
-        <p>Mr. Vince Francis Razo</p>
-        <p>Mrs. Jan Marini Razo</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Groomsmen & Bridesmaids (Paired Left/Right) -->
-  <div class="container py-5">
-    <div class="section-title text-center mb-5">
-      <h1 class="font-secondary display-4">The Wedding Squad</h1>
-      <div class="divider-heart">
-        <div class="line"></div>
-        <i class="far fa-heart"></i>
-        <div class="line"></div>
-      </div>
-    </div>
-
-<div class="container">
-
-  <!-- Best Man / Maid of Honor -->
-  <div class="row">
-    <div class="col-6 text-right">
-      <h6 class="text-uppercase text-primary mb-3 letter-spacing">Best Man</h6>
-      <p>Mr. Rued Torres</p>
-    </div>
-    <div class="col-6 text-left">
-      <h6 class="text-uppercase text-primary mb-3 letter-spacing">Maid of Honor</h6>
-      <p>Ms. Charlene Mae Corsino</p>
-    </div>
-  </div>
-
-  <!-- Section Titles -->
-  <div class="row mt-3">
-    <div class="col-6 text-right">
-      <h6 class="text-uppercase text-primary mb-3 letter-spacing">Groomsmen</h6>
-    </div>
-    <div class="col-6 text-left">
-      <h6 class="text-uppercase text-primary mb-3 letter-spacing">Bridesmaids</h6>
-    </div>
-  </div>
-
-  <!-- Paired Names -->
-  <div class="row">
-    <div class="col-6 text-right"><p>Mr. Haxyl Pidlaoan</p></div>
-    <div class="col-6 text-left"><p>Ms. Jennifer Ybañez</p></div>
-  </div>
-
-  <div class="row">
-    <div class="col-6 text-right"><p>Mr. Hargyl Pidlaoan</p></div>
-    <div class="col-6 text-left"><p>Ms. Marie Josephine Corsino</p></div>
-  </div>
-
-  <div class="row">
-    <div class="col-6 text-right"><p>Engr. Paul Emmanuel Corsino</p></div>
-    <div class="col-6 text-left"><p>Ms. Angelika Joyce Apiag</p></div>
-  </div>
-
-  <div class="row">
-    <div class="col-6 text-right"><p>Mr. Rey Anthony Baguio</p></div>
-    <div class="col-6 text-left"><p>Ms. Antonette Villapez</p></div>
-  </div>
-
-  <div class="row">
-    <div class="col-6 text-right"><p>Mr. Jan Laurent Mata</p></div>
-    <div class="col-6 text-left"><p>Ms. Jennifer Lim</p></div>
-  </div>
-
-  <div class="row">
-    <div class="col-6 text-right"><p>Mr. Kent Mariel Linao</p></div>
-    <div class="col-6 text-left"><p>Ms. Rosevel Odal</p></div>
-  </div>
-
-  <div class="row">
-    <div class="col-6 text-right"><p>Engr. Edmir Fuentes</p></div>
-    <div class="col-6 text-left"><p>Ms. Christine Mae Cinco</p></div>
-  </div>
-
-  <div class="row">
-    <div class="col-6 text-right"><p>Mr. Fenz Razel Apiag</p></div>
-    <div class="col-6 text-left"><p>Ms. Kaye Sia</p></div>
-  </div>
-
-  <div class="row">
-    <div class="col-6 text-right"><p>Mr. Jell Mercader</p></div>
-    <div class="col-6 text-left"><p>Ms. Karla Mae Getigan</p></div>
-  </div>
-
-</div>
-
-    <!-- Bridesmen (Centered) -->
-    <div class="row justify-content-center mt-4">
-      <div class="col-md-4 text-center">
-        <h6 class="text-uppercase text-primary mb-3 letter-spacing">Bridesmen</h6>
-        <p>Mr. Reine Nichole Roma</p>
-        <p>Mr. Mark Lorenz Malicdem</p>
-        <p>Mr. Jefferson Jimenez</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Bearers & Flower Girls (Centered) -->
-  <div class="container py-5 secondary-sponsors text-blue text-center">
-    <div class="section-title mb-5">
-      <h1 class="font-secondary display-4">Our Bearers & Flower Girls</h1>
-      <div class="divider-heart">
-        <div class="line"></div>
-        <i class="far fa-heart"></i>
-        <div class="line"></div>
-      </div>
-    </div>
-    <div class="row justify-content-center">
-      <div class="col-md-4 mb-4">
-        <h6 class="text-uppercase text-primary mb-3 letter-spacing">RING</h6>
-        <p>Yugo Akio Quijano</p>
-      </div>
-      <div class="col-md-4 mb-4">
-        <h6 class="text-uppercase text-primary mb-3 letter-spacing">BIBLE</h6>
-        <p>Jexyll Pidlaoan</p>
-      </div>
-      <div class="col-md-4 mb-4">
-        <h6 class="text-uppercase text-primary mb-3 letter-spacing">COIN</h6>
-        <p>Azryl Blayze Galario</p>
-      </div>
-      <div class="col-md-4 mb-4">
-        <h6 class="text-uppercase text-primary mb-3 letter-spacing">FLOWER GIRLS</h6>
-        <p>Alison Reign Bariquit</p>
-        <p>Nathalie Claire Gilig</p>
-        <p>Freya Elaine Pidlaoan</p>
-      </div>
-    </div>
-  </div>
-
-</div>
-
-<!-- STYLES -->
-<style>
-/* Letter spacing for headings */
-.letter-spacing {
-  letter-spacing: 3px;
-}
-
-/* Text color */
-.text-blue {
-  color: #007BFF;
-}
-
-/* Reduce spacing for p tags in sponsors */
-.secondary-sponsors p {
-  margin-bottom: 0.5rem;
-}
-
-/* Script font for Candle/Cord/Veil */
-.script-title {
-  font-family: 'Dancing Script', cursive;
-  font-weight: 400;
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
-}
-
-/* Divider heart */
-.divider-heart {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 15px;
-  width: 200px;
-  margin-left: auto;
-  margin-right: auto;
-}
-.divider-heart .line {
-  flex: 1;
-  border-top: 2px solid navy;
-}
-.divider-heart i {
-  color: navy;
-  margin: 0 10px;
-}
-</style>
-
-<!-- Import Dancing Script font -->
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
-    <!-- Friends & Family End -->
-
-
-    <!-- RSVP Start -->
-    <div class="container-fluid py-5" id="rsvp">
-            <div class="section-title position-relative text-center">
-                <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">DRESS CODE & GIFT IDEAS</h6>
-                <h1 class="font-secondary display-4">What to wear?</h1>
-                <i class="far fa-heart text-dark"></i>
-            </div><center>
-				<p class="text-primary mb-3" style="letter-spacing: 1px;">
-                    <strong>Time to bring out your finest!</strong>
-                    <br/><br/>
-                    We kindly invite our guests to come dressed in formal attire, as shown in the photo. Think elegant, stylish, and camera‑ready. We want this celebration (and the photos!) to be truly unforgettable.
-                    <br/><br/>
-                    We have just one small favor: dress up with us for this very special day. It would mean so much to see everyone looking their best as we celebrate love, laughter, and beautiful new beginnings together.
-                    <br/>
-                </p>
-<table style="width: 100%; border-collapse: separate; border-spacing: 20px;">
-  <tr>
-    <td style="border: 2px solid #003366; border-radius: 10px; padding: 15px; vertical-align: top; text-align: center;">
-      <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 1px;">Sponsors</h6>
-      <img src="img/attire/sponsor.png" alt="Sponsors Dress Code" 
-           style="max-width: 100%; max-height: 180px; object-fit: contain; display: block; margin: 0 auto;">
-        <p><strong>Men</strong>: Suit or Tuxedo</p>
-        <p><strong>Women</strong>: Gown</p>
-    </td>
-    <td style="border: 2px solid #003366; border-radius: 10px; padding: 15px; vertical-align: top; text-align: center;">
-      <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 1px;">Guests</h6>
-      <img src="img/attire/guest.png" alt="Guests Dress Code" 
-           style="max-width: 100%; max-height: 180px; object-fit: contain; display: block; margin: 0 auto;">
-        <p><strong>Men</strong>: Long-sleeve formal suit or Tuxedo</p>
-        <p><strong>Women</strong>: Formal Dress or Cocktail Dress</p>
-    </td>
-  </tr>
-</table>
-
-<!-- Color Motif below the table -->
-<h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px; text-align: center; margin-top: 30px;">Color Motif</h6>
-<div style="display: flex; justify-content: center; gap: 40px; margin-top: 10px;">
-  <div style="text-align: center; font-family: Arial, sans-serif;">
-    <div style="width: 80px; height: 80px; border-radius: 50%; margin-bottom: 10px; border: 4px solid #ddd; background: #808080;"></div>
-    <p style="font-size: 16px; font-weight: 500; margin: 0;">Gray</p>
-  </div>
-
-  <div style="text-align: center; font-family: Arial, sans-serif;">
-    <div style="width: 80px; height: 80px; border-radius: 50%; margin-bottom: 10px; border: 4px solid #ddd; background: #0b1f4d;"></div>
-    <p style="font-size: 16px; font-weight: 500; margin: 0;">Navy Blue</p>
-  </div>
-</div>
- 
-<hr style="border: 1px solid #003366; width: 50%; margin: 30px auto;">
-              <div class="section-title position-relative text-center">
-                <h1 class="font-secondary display-4">Note on Gifts</h1>
-                <i class="far fa-heart text-dark"></i>
-            </div>
-            <center>
-			<h5 class="font-weight-normal text-muted mb-3 pb-3">
-            Having you celebrate with us is already the greatest gift we could ask for. However, if you wish to bless us with something more, MONETARY GIFTS would be truly appreciated as we begin our married life together.
-            <br/><br/>
-            Our home is already filled with love, and our kitchen is happily stocked, so we kindly request no more rice cookers, plates, or cups. For your convenience, a QR code is available below.
-            <br/><br/>
-            Thank you for your love, generosity, and for being part of this very special day with us.
-            </h5>    
-
-            <p><strong>Scan the QR code below:</strong></p>
-                <img src="img/gift/qr.png" alt="QR Code" class="qr-code">
-            </center>
-            </div>
-
-</div>
-</div>
-        </div>
-    </div>
-    <!-- RSVP End -->
-
-
-    <!-- Footer Start -->
-    <div class="container-fluid bg-dark text-white py-5" id="contact" style="margin-top: 90px;">
-<div class="container text-center py-5">
-
-    <div class="section-title position-relative text-center">
-        <h1 class="font-secondary display-3 text-white">You're Invited!</h1>
-        <br/>
-
-        <p>
-            We are truly honored to celebrate our wedding day with you, and your presence would mean so much to us. If you are receiving this invitation, it is because you are one of the special guests personally chosen by the bride and groom. A seat has been reserved especially for you, and we can’t wait to share this unforgettable moment surrounded by our closest family and friends.
-        </p>
-
-        <hr style="border: 1px solid rgba(255,255,255,0.3); margin: 30px 0;">
-
-        <p>
-            To help us create a smooth, intimate, and memorable celebration, we kindly ask for your understanding and cooperation with the following guest policies:
-        </p>
-
-        <ul style="list-style: disc; text-align: left; display: inline-block; margin: 1rem auto 2rem; padding-left: 1.2rem;">
-            <li>
-                <b>NO CHILDREN ALLOWED:</b> <i>We love your little ones dearly; however, to maintain a calm, safe, and enjoyable atmosphere for all our guests, we are unable to accommodate children at both the ceremony and reception. This allows everyone to relax and fully enjoy the celebration.</i>
-            </li>
-            <li style="margin-top: 1rem;">
-                <b>STRICTLY NO PLUS ONE:</b> <i>Due to limited seating and venue capacity, we can only accommodate guests who have received an invitation. We sincerely appreciate your understanding, as this helps us celebrate comfortably with everyone we have invited.</i>
-            </li>
-            <li style="margin-top: 1rem;">
-                <b>RSVP IS REQUIRED:</b> <i>Please confirm your attendance by responding through the RSVP link on or before May 31, 2026. Your timely response will help us finalize arrangements and ensure everything runs smoothly on our special day.</i>
-            </li>
-            <li style="margin-top: 1rem;">
-                <b>RESERVED SEATING:</b> <i>To ensure a seamless program flow, seating will be assigned. We kindly ask guests to follow the seating arrangement prepared for the event.</i>
-            </li>
-        </ul>
-
-        <p>
-            We are so excited to celebrate this beautiful milestone with you and create unforgettable memories together. Thank you for your love, understanding, and support as we begin this new chapter of our lives.
-        </p>
-
-        <p><strong>Scan the QR code below or click this link to RSVP:</strong></p>
-        <img src="img/qr/rsvp-qr.png" alt="RSVP QR Code" class="qr-code">
-        <br/><br/>
-    </div>
-
-</div>
-            </div>
-<footer style="text-align: center; padding: 20px 0; background-color: #0b1f4d; color: white; font-size: 0.95rem;">
-    <p class="m-0">&copy; 2026 HARVY. All Rights Reserved.</p>
-</footer>
-        </div>
-    </div>
-    <!-- Footer End -->
-
-
-    <!-- Scroll to Bottom -->
-    <i class="fa fa-2x fa-angle-down text-white scroll-to-bottom"></i>
-
-    <!-- Back to Top -->
-    <a href="#" class="btn btn-lg btn-outline-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
-
-
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="lib/isotope/isotope.pkgd.min.js"></script>
-    <script src="lib/lightbox/js/lightbox.min.js"></script>
-
-    <!-- Template Javascript -->
-    <script src="js/main.js"></script>
 </body>
-
-
-
 </html>
