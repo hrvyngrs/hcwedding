@@ -1,0 +1,9 @@
+
+# local jQuery[-UI] files
+www/js/jquery.min.js
+www/js/jquery-ui.min.js
+www/css/jquery-ui.css
+www/css/jquery-ui.min.css
+www/css/images/
+
+include/rsvp_config_personal.php

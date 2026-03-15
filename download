@@ -1,0 +1,101 @@
+html {
+        height: 100%;
+}
+body {
+        min-height: 100%;
+        margin: 0px;
+        font-size: 1em;
+        font-family: Helvetica;
+        background: linear-gradient(#6699EE, #1223EE);
+        background: -webkit-linear-gradient(#6699EE, #1223EE);
+        background: -o-linear-gradient(#6699EE, #1223EE);
+        background: -moz-linear-gradient(#6699EE, #1223EE);
+/* rainbow, for the daring 
+        background: -webkit-linear-gradient(#FF0000, #FF8800, #FFFF00, #00FF00, #0000FF, #FF00FF);
+        background: -o-linear-gradient(#FF0000, #FF8800, #FFFF00, #00FF00, #0000FF, #FF00FF);
+        background: -moz-linear-gradient(#FF0000, #FF8800, #FFFF00, #00FF00, #0000FF, #FF00FF);
+        background: linear-gradient(#FF0000, #FF8800, #FFFF00, #00FF00, #0000FF, #FF00FF);
+*/
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+}
+#content {
+        display: block;
+        padding: 10px;
+}
+#content>div {
+        padding: 20px;
+        margin-top: 10px;
+        background-color: rgba(255, 255, 255, 0.6);
+        border: black solid thin;
+}
+.good {
+/*        font-weight: bold;*/
+        color: green;
+}
+.error {
+/*        font-weight: bold;*/
+        color: red;
+}
+@media only screen and (max-device-width: 600px) {
+        body {
+                font-size: 1.5em !important;
+        }
+        input,label {
+                margin: 0.3em !important;
+                font-size: 1.5em !important;
+        }
+        input[type="checkbox"],input[type="radio"] {
+                height: 0.8em !important;
+                width: 0.8em !important;
+        }
+}
+@media only screen and (min-device-width: 601px) and (max-device-width: 800px) {
+        body {
+                font-size: 1.3em !important;
+        }
+        input,label {
+                margin: 0.3em !important;
+                font-size: 1.3em !important;
+        }
+        input[type="checkbox"],input[type="radio"] {
+                height: 0.7em !important;
+                width: 0.7em !important;
+        }
+}
+@media only screen (min-device-width: 801px) {
+        body {
+                font-size: 1.1em !important;
+        }
+        input,label {
+                margin: 0.3em !important;
+                font-size: 1.1em !important;
+        }
+        input[type="checkbox"],input[type="radio"] {
+                height: 0.6em !important;
+                width: 0.6em !important;
+        }
+}
+ul#party_list {
+        margin-bottom: 0px;
+}
+#thank_you {
+        display: inline-block;
+/*
+        border: black solid thin;
+        text-align: center;
+        background-color: rgba(255, 255, 000, 1);
+*/
+}
+textarea.rsvp_comment {
+        min-width: 50%;
+        width: 500px;
+        max-width: 100%;
+}
+div[id$="_options"] {
+        margin-left: 2em;
+}
